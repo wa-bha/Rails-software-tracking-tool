@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>List of Tools</h1>
+<%= link_to "View all Users", users_path %>
+<%= link_to "Add New Tool", new_tool_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool Name</th>
+      <th>Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tools.each do |tool| %>
+      <tr>
+        <td> <%= link_to tool.name, tool %> </td>
+        <td>
+          <% tool.users.each do |user| %>
+            <%= user.full_name %>, 
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

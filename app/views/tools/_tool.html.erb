@@ -1,0 +1,14 @@
+<h1>Tool</h1>
+<div>
+  <p>
+    <strong>Tool Name:</strong>
+    <%= tool.name %>
+  </p>
+
+  <strong>Users:</strong>
+    <% tool.users.each do |user| %>
+      <%= link_to user, style: "text-decoration:none" do %>
+        <span><%= user.full_name %></span>
+      <% end %>
+    <% end %>
+</div>
