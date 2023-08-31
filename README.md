@@ -22,3 +22,6 @@ We need to keep track of who is using what tool.
 - Creating a view
 - Using ActiveRecord queries
 - Writing RSpec tests
+
+### ER Diagram
+![ER Diagram](./public/Project_ER_Diagram.png)
