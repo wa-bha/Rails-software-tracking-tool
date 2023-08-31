@@ -23,17 +23,14 @@ class ToolsController < ApplicationController
 
   def destroy
     @tool = Tool.find(params[:id])
+    @category.destroy
 
-    if @tool.destroy
-      redirect_to tools_path, notice: "Tool was successfully deleted."
-    else
-      redirect_to tools_path, alert: "Could not delete tool."
-    end
+    redirect_to tools_path, notice: "Tool was successfully deleted."
   end
 
   private
 
   def tool_params
-    params.require(:tool).permit(:name, user_ids: [])
+    params.require(:tool).permit(:name, :category_id, user_ids: [])
   end
 end
