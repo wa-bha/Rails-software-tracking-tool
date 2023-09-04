@@ -1,10 +1,10 @@
 class ToolsController < ApplicationController
   def index
-    @tools = Tool.all
+    @tools = Tool.includes(:users, :category).all
   end
 
   def show
-    @tool = Tool.find(params[:id])
+    @tool = Tool.includes(:users, :category).find(params[:id])
   end
 
   def new

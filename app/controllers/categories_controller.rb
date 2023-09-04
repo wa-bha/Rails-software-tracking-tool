@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.includes(:tools).all
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.includes(:tools).find(params[:id])
   end
 
   def new
