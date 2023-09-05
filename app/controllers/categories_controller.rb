@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   def index
     @categories = Category.includes(:tools).all
+    @categories = @categories.search(params[:search]) if params[:search].present?
   end
 
   def edit

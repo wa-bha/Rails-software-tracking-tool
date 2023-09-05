@@ -1,6 +1,7 @@
 class ToolsController < ApplicationController
   def index
     @tools = Tool.includes(:users, :category).all
+    @tools = @tools.search(params[:search]) if params[:search].present?
   end
 
   def new

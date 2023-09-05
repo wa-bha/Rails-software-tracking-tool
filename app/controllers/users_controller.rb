@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.includes(:tools).all
+    @users = @users.search(params[:search]) if params[:search].present?
   end
 
   def new
