@@ -1,0 +1,25 @@
+<%= form_with(model: @tool, url: tools_path) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: "Select a category" %>
+  </div>
+
+  <div>
+    <%= form.label :users %>
+    <% User.all.each do |user| %>
+      <label>
+        <%= check_box_tag "tool[user_ids][]", user.id %>
+        <%= user.full_name %>
+      </label><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

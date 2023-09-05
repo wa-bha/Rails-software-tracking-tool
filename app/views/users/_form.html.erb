@@ -1,0 +1,20 @@
+<%= form_with(model: @user, url: users_path) do |form| %>
+  <div>
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div>
+    <%= form.label :tools %>
+    <% Tool.all.each do |tool| %>
+      <label>
+        <%= check_box_tag "user[tool_ids][]", tool.id %>
+        <%= tool.name %>
+      </label><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

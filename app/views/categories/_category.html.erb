@@ -1,0 +1,14 @@
+<h1>Category</h1>
+<div>
+  <div>
+    <strong>Category Name:</strong>
+    <%= category.name %>
+  </div>
+
+  <strong>Categories:</strong>
+  <% category.tools.each do |tool| %>
+    <%= link_to tool, style: "text-decoration:none" do %>
+      <span><%= tool.name %></span>
+    <% end %>
+  <% end %>
+</div>
