@@ -5,11 +5,13 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+  <br />
 
   <div>
     <%= form.label :category %>
     <%= form.collection_select(:category_id, Category.all, :id, :name, prompt: "Select a category") %>
   </div>
+  <br />
 
   <div>
     <%= form.label :users %>
@@ -17,9 +19,10 @@
       <label>
         <%= check_box_tag "tool[user_ids][]", user.id, @tool.users.include?(user) %>
         <%= user.full_name %>
-      </label><br>
+      </label>
     <% end %>
   </div>
+  <br />
 
   <div>
     <%= form.submit "Update Tool" %>

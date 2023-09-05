@@ -3,6 +3,18 @@
 
 <%= link_to "View all Tools", tools_path %>
 <%= link_to "Add New Category", new_category_path %>
+<br />
+<br />
+
+<%= form_with(url: categories_path, method: "get") do |form| %>
+  <div>
+    <%= form.label :search, "Search Categories:" %>
+    <%= form.text_field :search %>
+    <%= form.submit "Search" %>
+    <%= link_to "Clear Search", categories_path %>
+  </div>
+<% end %>
+<br />
 
 <table>
   <thead>

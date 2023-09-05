@@ -5,6 +5,7 @@
     <%= form.label :full_name %>
     <%= form.text_field :full_name %>
   </div>
+  <br />
 
   <div>
     <%= form.label :tools %>
@@ -12,12 +13,13 @@
       <label>
         <%= check_box_tag "user[tool_ids][]", tool.id, @user.tools.include?(tool) %>
         <%= tool.name %>
-      </label><br>
+      </label>
     <% end %>
   </div>
+  <br />
 
   <div>
     <%= form.submit "Update User" %>
-    <%= link_to "Cancel", user_path %>
+    <%= link_to "Cancel", users_path %>
   </div>
 <% end %>

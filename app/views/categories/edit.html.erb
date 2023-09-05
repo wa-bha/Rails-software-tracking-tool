@@ -5,6 +5,7 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+  <br />
 
   <div>
     <%= form.label :tools %>
@@ -12,9 +13,10 @@
       <label>
         <%= check_box_tag "category[tool_ids][]", tool.id, @category.tools.include?(tool) %>
         <%= tool.name %>
-      </label><br>
+      </label>
     <% end %>
   </div>
+  <br />
 
   <div>
     <%= form.submit "Update Category" %>

@@ -4,6 +4,18 @@
 <%= link_to "View all Users", users_path %>
 <%= link_to "View all Categories", categories_path %>
 <%= link_to "Add New Tool", new_tool_path %>
+<br />
+<br />
+
+<%= form_with(url: tools_path, method: "get") do |form| %>
+  <div>
+    <%= form.label :search, "Search Tools:" %>
+    <%= form.text_field :search %>
+    <%= form.submit "Search" %>
+    <%= link_to "Clear Search", tools_path %>
+  </div>
+<% end %>
+<br />
 
 <table>
   <thead>
