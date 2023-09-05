@@ -3,10 +3,6 @@ class UsersController < ApplicationController
     @users = User.includes(:tools).all
   end
 
-  def show
-    @user = User.includes(:tools).find(params[:id])
-  end
-
   def new
     @user = User.new
   end
@@ -18,6 +14,20 @@ class UsersController < ApplicationController
       redirect_to users_path, notice: "User was successfully created."
     else
       render :new
+    end
+  end
+
+  def edit
+    @user = User.includes(:tools).find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to users_path, notice: "User was successfully updated."
+    else
+      render :edit
     end
   end
 

@@ -3,10 +3,6 @@ class ToolsController < ApplicationController
     @tools = Tool.includes(:users, :category).all
   end
 
-  def show
-    @tool = Tool.includes(:users, :category).find(params[:id])
-  end
-
   def new
     @tool = Tool.new
   end
@@ -21,9 +17,23 @@ class ToolsController < ApplicationController
     end
   end
 
+  def edit
+    @tool = Tool.includes(:users, :category).find(params[:id])
+  end
+
+  def update
+    @tool = Tool.find(params[:id])
+
+    if @tool.update(tool_params)
+      redirect_to tools_path, notice: "Tool was successfully updated."
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @tool = Tool.find(params[:id])
-    @category.destroy
+    @tool.destroy
 
     redirect_to tools_path, notice: "Tool was successfully deleted."
   end

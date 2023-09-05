@@ -3,8 +3,18 @@ class CategoriesController < ApplicationController
     @categories = Category.includes(:tools).all
   end
 
-  def show
+  def edit
     @category = Category.includes(:tools).find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+
+    if @category.update(category_params)
+      redirect_to categories_path, notice: "Category was successfully updated."
+    else
+      render :edit
+    end
   end
 
   def new

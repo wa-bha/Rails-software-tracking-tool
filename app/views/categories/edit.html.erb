@@ -1,0 +1,23 @@
+<h1>Edit Category</h1>
+
+<%= form_with(model: @category, url: category_path(@category), method: :patch) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :tools %>
+    <% Tool.all.each do |tool| %>
+      <label>
+        <%= check_box_tag "category[tool_ids][]", tool.id, @category.tools.include?(tool) %>
+        <%= tool.name %>
+      </label><br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit "Update Category" %>
+    <%= link_to "Cancel", categories_path %>
+  </div>
+<% end %>

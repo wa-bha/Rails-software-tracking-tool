@@ -1,11 +1,6 @@
-<h1>User</h1>
+<h1>User: <%= user.full_name %></h1>
 
 <div>
-  <div>
-    <strong>Full Name:</strong>
-    <%= user.full_name %>
-  </div>
-
   <strong>Tools:</strong>
   <% user.tools.each do |tool| %>
     <%= link_to tool, style: "text-decoration:none" do %>
