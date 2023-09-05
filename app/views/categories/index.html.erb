@@ -21,6 +21,7 @@
     <tr>
       <th>Category Name</th>
       <th>Associated Tools</th>
+      <th>Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +32,9 @@
           <% category.tools.each do |tool| %>
             <%= tool.name %>, 
           <% end %>
+        </td>
+        <td style="border: 1px solid #333">
+          <%= link_to "Edit", edit_category_path(category) %>
         </td>
         <td style="border: 1px solid #333">
           <%= button_to "Delete this category", category, method: :delete %>
