@@ -91,11 +91,7 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe "PUT #update" do
-    let(:new_attributes) do
-      {
-        name: "Updated Category Name",
-      }
-    end
+    let(:new_attributes) do { name: "Updated Category Name" } end
 
     context "with valid parameters" do
       it "updates the requested category" do

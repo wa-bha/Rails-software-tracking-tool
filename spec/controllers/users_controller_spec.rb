@@ -92,11 +92,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "PUT #update" do
     context "with valid parameters" do
-      let(:new_attributes) do
-        {
-          full_name: "Jane Smith",
-        }
-      end
+      let(:new_attributes) do { full_name: "Jane Smith" } end
 
       it "updates the requested user" do
         user = create(:user)
