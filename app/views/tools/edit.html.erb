@@ -1,0 +1,31 @@
+<h1>Edit Tool</h1>
+
+<%= form_with(model: @tool, url: tool_path(@tool), method: :patch) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <br />
+
+  <div>
+    <%= form.label :category %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, prompt: "Select a category") %>
+  </div>
+  <br />
+
+  <div>
+    <%= form.label :users %>
+    <% User.all.each do |user| %>
+      <label>
+        <%= check_box_tag "tool[user_ids][]", user.id, @tool.users.include?(user) %>
+        <%= user.full_name %>
+      </label>
+    <% end %>
+  </div>
+  <br />
+
+  <div>
+    <%= form.submit "Update Tool" %>
+    <%= link_to "Cancel", tools_path %>
+  </div>
+<% end %>

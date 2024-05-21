@@ -1,14 +1,18 @@
-<h1>Tool</h1>
+<h1>Tool: <%= tool.name %></h1>
 <div>
   <div>
-    <strong>Tool Name:</strong>
-    <%= tool.name %>
+    <strong>Users:</strong>
+    <% tool.users.each do |user| %>
+      <%= link_to user, style: "text-decoration:none" do %>
+        <span><%= user.full_name %></span>
+      <% end %>
+    <% end %>
   </div>
 
-  <strong>Users:</strong>
-  <% tool.users.each do |user| %>
-    <%= link_to user, style: "text-decoration:none" do %>
-      <span><%= user.full_name %></span>
+  <div>
+    <strong>Category:</strong>
+    <%= link_to tool.category, style: "text-decoration:none" do %>
+      <span><%= tool.category.name %></span>
     <% end %>
-  <% end %>
+  </div>
 </div>

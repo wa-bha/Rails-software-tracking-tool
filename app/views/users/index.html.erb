@@ -1,24 +1,44 @@
+<h1>List of Users</h1>
 <p style="color: green"><%= notice %></p>
 
-<h1>List of Users</h1>
 <%= link_to "View all Tools", tools_path %>
 <%= link_to "Add New User", new_user_path %>
+<br />
+<br />
+
+<%= form_with(url: users_path, method: "get") do |form| %>
+  <div>
+    <%= form.label :search, "Search Users:" %>
+    <%= form.text_field :search %>
+    <%= form.submit "Search" %>
+    <%= link_to "Clear Search", users_path %>
+  </div>
+<% end %>
+<br />
 
 <table>
   <thead>
     <tr>
       <th>Full Name</th>
       <th>Software tools</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td style="border: 1px solid #333"> <%= link_to user.full_name, user %> </td>
+        <td style="border: 1px solid #333"> <%= user.full_name %> </td>
         <td style="border: 1px solid #333">
           <% user.tools.each do |tool| %>
             <%= tool.name %>,
           <% end %>
+        </td>
+        <td style="border: 1px solid #333">
+          <%= link_to "Edit", edit_user_path(user) %>
+        </td>
+        <td style="border: 1px solid #333">
+          <%= button_to "Delete this user", user, method: :delete %>
         </td>
       </tr>
     <% end %>

@@ -1,9 +1,21 @@
+<h1>List of Tools</h1>
 <p style="color: green"><%= notice %></p>
 
-<h1>List of Tools</h1>
 <%= link_to "View all Users", users_path %>
 <%= link_to "View all Categories", categories_path %>
 <%= link_to "Add New Tool", new_tool_path %>
+<br />
+<br />
+
+<%= form_with(url: tools_path, method: "get") do |form| %>
+  <div>
+    <%= form.label :search, "Search Tools:" %>
+    <%= form.text_field :search %>
+    <%= form.submit "Search" %>
+    <%= link_to "Clear Search", tools_path %>
+  </div>
+<% end %>
+<br />
 
 <table>
   <thead>
@@ -11,19 +23,27 @@
       <th>Name</th>
       <th>Users</th>
       <th>Category</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <% @tools.each do |tool| %>
       <tr>
-        <td style="border: 1px solid #333"> <%= link_to tool.name, tool %> </td>
+        <td style="border: 1px solid #333"> <%= tool.name %> </td>
         <td style="border: 1px solid #333">
           <% tool.users.each do |user| %>
             <%= user.full_name %>, 
           <% end %>
         </td>
         <td style="border: 1px solid #333">
-          <%= link_to tool.category&.name, tool.category if tool.category %> 
+          <%= tool.category&.name %> 
+        </td>
+        <td style="border: 1px solid #333">
+          <%= link_to "Edit", edit_tool_path(tool) %>
+        </td>
+        <td style="border: 1px solid #333">
+          <%= button_to "Delete this tool", tool, method: :delete %>
         </td>
       </tr>
     <% end %>
